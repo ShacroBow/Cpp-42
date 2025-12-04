@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 // using std::cout;
 // using std::endl;
@@ -6,6 +7,7 @@
 
 int main(int argc, char **argv)
 {
+    std::string tmpo;
     if (argc < 2 )
     {
         std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
@@ -15,10 +17,10 @@ int main(int argc, char **argv)
     while (argv[i])
     {
         for(int j = 0; argv[i][j]; j++)
-            std::cout << (char )std::toupper((int )argv[i][j]);
+            tmpo += (char )std::toupper((int )argv[i][j]);
         i++;
     }
-    std::cout << std::endl;
+    std::cout << tmpo << std::endl;
     
     return 0;
 }
