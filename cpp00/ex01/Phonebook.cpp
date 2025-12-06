@@ -1,11 +1,12 @@
 #include "Phonebook.hpp"
+#include <iomanip>
 
 Phonebook::Phonebook(void)
 {
 	this->_idx = 0;
 	std::cout << "Welcome to phonebook app: these are the legal instructions\n" << std::endl;
-	std::cout << "\tADD:\tsave a new contact\n" << std::endl;
-	std::cout << "\tSEARCH:\tdisplay a specific contact\n" << std::endl;
+	std::cout << "\tADD:\tsave a new contact" << std::endl;
+	std::cout << "\tSEARCH:\tdisplay a specific contact" << std::endl;
 	std::cout << "\tEXIT" << std::endl;
 }
 
@@ -14,12 +15,7 @@ Phonebook::~Phonebook(void)
 	std::cout << "Bye." << std::endl;
 }
 
-Contact	Phonebook::get_contact(int _idx)
-{
-	return (this->_contacts[_idx % 8]);
-}
-
-void	Phonebook::add(void)
+void	Phonebook::m_add(void)
 {
 	std::string	str = "";
 	int			current_idx;
@@ -41,51 +37,50 @@ void	Phonebook::add(void)
 	str = "";
 	while (!std::cin.eof() && str == "")
 	{
-		std::cout << "Enter the first name: ";
+		std::cout << std::setw(27) << std::left << "Enter the first name:";
 		if (std::getline(std::cin, str) && str != "")
-			this->_contacts[current_idx].set_first(str); 
+			this->_contacts[current_idx].m_setFirst(str); 
 	}
 	str = "";
 	while (!std::cin.eof() && str == "")
 	{
-		std::cout << "Enter " << this->_contacts[current_idx].get_first() \
-			<< "'s last name: ";
+		std::cout << std::setw(27) << std::left 
+		<< ("Enter " + this->_contacts[current_idx].m_getFirst() + "'s last name: ");
 		if (std::getline(std::cin, str) && str != "")
-			this->_contacts[current_idx].set_last(str);
+			this->_contacts[current_idx].m_setLast(str);
 	}
 	str = "";
 	while (!std::cin.eof() && str == "")
 	{
-		std::cout << "Enter " << this->_contacts[current_idx].get_first() \
-			<< "'s nickname: "; 
+		std::cout << std::setw(27) << std::left 
+		<< ("Enter " + this->_contacts[current_idx].m_getFirst() + "'s nickname: "); 
 		if (std::getline(std::cin, str) && str != "")
-			this->_contacts[current_idx].set_nick(str);
+			this->_contacts[current_idx].m_setNick(str);
 	}
 	str = "";
 	while (!std::cin.eof() && str == "")
 	{
-		std::cout << "Enter " << this->_contacts[current_idx].get_first() \
-			<< "'s phone number: ";
+		std::cout << std::setw(27) << std::left 
+		<< ("Enter " + this->_contacts[current_idx].m_getFirst() + "'s phone number: ");
 		if (std::getline(std::cin, str) && str != "")
-			this->_contacts[current_idx].set_phoneNum(str);
+			this->_contacts[current_idx].m_setPhoneNum(str);
 	}
 	str = "";
 	while (!std::cin.eof() && str == "")
 	{
-		std::cout << "Enter a note about " << this->_contacts[current_idx].get_first() \
-			<< ": ";
+		std::cout << std::setw(27) << std::left 
+		<< ("Enter a note about " + this->_contacts[current_idx].m_getFirst() + ": ");
 		if (std::getline(std::cin, str) && str != "")
 		{
-			this->_contacts[current_idx].set_note(str);
-			std::cout << this->_contacts[current_idx].get_first() << \
-				" successfully added to phonebook [" << (current_idx + 1) << "/8]" << std::endl;
+			this->_contacts[current_idx].m_setNote(str);
+			std::cout << this->_contacts[current_idx].m_getFirst() 
+			<< "successfully added to phonebook [" << (current_idx + 1) << "/8]" << std::endl;
 		}
 	}
-	if (this->_idx < 8)
-		this->_idx++;
+	this->_idx++;
 }
 
-void	Phonebook::search(void)
+void	Phonebook::m_search(void)
 {
 	std::string	str;
 	int			max_idx;
@@ -95,7 +90,7 @@ void	Phonebook::search(void)
 	else
 		max_idx = 8;
 
-	if (!contact_list(this->_contacts))
+	if (!ft_contactList(this->_contacts))
 		return;
 	while (!std::cin.eof())
 	{
@@ -103,27 +98,29 @@ void	Phonebook::search(void)
 		if (std::getline(std::cin, str) && str != "")
 		{
 			if (str.size() == 1 && str[0] >= '1' && str[0] < ('0' + max_idx + 1) && \
-					this->_contacts[str[0] - 1 - '0'].exists())
+					this->_contacts[str[0] - 1 - '0'].m_exists())
 				break ;
 		}
 		if (str != "")
 			std::cout << "Invalid index!" << std::endl;
 	}
 	if (!std::cin.eof())
-		this->print(this->_contacts[str[0] - 1 - '0']);
+		this->m_print(this->_contacts[str[0] - 1 - '0']);
 }
 
-void	Phonebook::print(Contact contact)
+void	Phonebook::m_print(Contact contact)
 {
 	std::cout << std::endl << "Requesting contact information..." << std::endl;
-	if (!contact.exists())
+	if (!contact.m_exists())
 	{
 		std::cout << "Failed to get info for this contact" << std::endl;
 		return ;
 	}
-	std::cout << "First Name:\t" << contact.get_first() << std::endl;
-	std::cout << "Last Name:\t" << contact.get_last() << std::endl;
-	std::cout << "Nickname:\t" << contact.get_nick() << std::endl;
-	std::cout << "Phone Number:\t" << contact.get_phone_num() << std::endl;
-	std::cout << "Note:\t\t" << contact.get_note() << std::endl;
+	std::cout << std::setw(15) << std::left << "First Name:" << contact.m_getFirst() << std::endl;
+	std::cout << std::setw(15) << std::left << "Last Name:" << contact.m_getLast() << std::endl;
+	std::cout << std::setw(15) << std::left << "Nickname:" << contact.m_getNick() << std::endl;
+	std::cout << std::setw(15) << std::left << "Phone Number:" << contact.m_getPhoneNum() << std::endl;
+	std::cout << std::setw(15) << std::left << "Note:" << contact.m_getNote() << std::endl;
 }
+
+

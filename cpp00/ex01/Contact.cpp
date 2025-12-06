@@ -10,58 +10,58 @@ Contact::~Contact(void)
 }
 
 /*****************Setters*****************/
-void	Contact::set_first(std::string str)
+void	Contact::m_setFirst(std::string str)
 {
 	this->_firstName = str;
 }
 
-void	Contact::set_last(std::string str)
+void	Contact::m_setLast(std::string str)
 {
 	this->_lastName = str;
 }
 
-void	Contact::set_nick(std::string str)
+void	Contact::m_setNick(std::string str)
 {
 	this->_nickname = str;
 }
 
-void	Contact::set_phoneNum(std::string str)
+void	Contact::m_setPhoneNum(std::string str)
 {
 	this->_phoneNumber = str;
 }
 
-void	Contact::set_note(std::string str)
+void	Contact::m_setNote(std::string str)
 {
 	this->_note = str;
 }
 
 /*****************Getters*****************/
-std::string	Contact::get_first(void) const
+std::string	Contact::m_getFirst(void) const
 {
 	return (this->_firstName);
 }
 
-std::string	Contact::get_last(void) const
+std::string	Contact::m_getLast(void) const
 {
 	return (this->_lastName);
 }
 
-std::string	Contact::get_nick(void) const
+std::string	Contact::m_getNick(void) const
 {
 	return (this->_nickname);
 }
 
-std::string	Contact::get_phone_num(void) const
+std::string	Contact::m_getPhoneNum(void) const
 {
 	return (this->_phoneNumber);
 }
 
-std::string	Contact::get_note(void) const
+std::string	Contact::m_getNote(void) const
 {
 	return (this->_note);
 }
 
-bool	Contact::exists(void) const
+bool	Contact::m_exists(void) const
 {
 	if (this->_firstName.length() > 0)
 	{

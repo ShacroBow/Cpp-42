@@ -1,48 +1,34 @@
 
 #include "Phonebook.hpp"
+#include <iomanip>
 
-static std::string	add_spaces(int n)
-{
-	std::string	str;
-	while(n > 0)
-	{
-		n--;
-		str += " ";
-	}
-	return (str);
-}
-
-static std::string	str_resize(std::string str, unsigned long max)
+static std::string	ft_strTruncate(std::string str, unsigned long max)
 {
 	if (str.length() > max)
 	{
-		str.resize(max);
-		str[str.length() - 1] = '.';
+		str.resize(max - 1);
+		str += '.';
 	}
 	return (str);
 }
 
-int	contact_list(Contact contacts[8])
+int	ft_contactList(Contact contacts[8])
 {
 	std::string	str;
 	int			i;
 
-	std::cout << "_____________________________________________" << std::endl;
+	std::cout << " ___________________________________________ " << std::endl;
 	std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
 	std::cout << "|__________|__________|__________|__________|" << std::endl;
 	
 	i = 0;
-	while (i < 8 && contacts[i].exists())
+	while (i < 8 && contacts[i].m_exists())
 	{
-		str = i + 1 +'0';
-		str = str_resize(str, 10);
-		std::cout << "|" << add_spaces(10 - str.size()) << str;
-		str = str_resize(contacts[i].get_first(), 10);
-		std::cout << "|" << add_spaces(10 - str.size()) << str;
-		str = str_resize(contacts[i].get_last(), 10);
-		std::cout << "|" << add_spaces(10 - str.size()) << str;
-		str = str_resize(contacts[i].get_nick(), 10);
-		std::cout << "|" << add_spaces(10 - str.size()) << str;
+		str = (char)('0' + i + 1);
+		std::cout << "|" << std::right <<std::setw(10) << ft_strTruncate(str, 10);
+		std::cout << "|" << std::right <<std::setw(10) << ft_strTruncate(contacts[i].m_getFirst(), 10);
+		std::cout << "|" << std::right <<std::setw(10) << ft_strTruncate(contacts[i].m_getLast(), 10);
+		std::cout << "|" << std::right <<std::setw(10) << ft_strTruncate(contacts[i].m_getNick(), 10);
 		std::cout << "|" << std::endl;
 		i++;
 	}
@@ -63,9 +49,9 @@ int	main(void)
 		std::cout << "\nEnter a command > ";
 		std::getline(std::cin, str);
 		if (str == "ADD")
-			pb.add();
+			pb.m_add();
 		else if(str == "SEARCH")
-			pb.search();
+			pb.m_search();
 		if (std::cin.eof())
 		{
 			std::cout << std::endl;
