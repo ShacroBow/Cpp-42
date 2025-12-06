@@ -1,0 +1,6 @@
+reference
+.vscode
+*.o
+*.out
+phonebook
+megaphone

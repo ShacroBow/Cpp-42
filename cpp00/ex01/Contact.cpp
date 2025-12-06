@@ -30,9 +30,9 @@ void	Contact::m_setPhoneNum(std::string str)
 	this->_phoneNumber = str;
 }
 
-void	Contact::m_setNote(std::string str)
+void	Contact::m_setSecret(std::string str)
 {
-	this->_note = str;
+	this->_darkestSecret = str;
 }
 
 /*****************Getters*****************/
@@ -56,9 +56,9 @@ std::string	Contact::m_getPhoneNum(void) const
 	return (this->_phoneNumber);
 }
 
-std::string	Contact::m_getNote(void) const
+std::string	Contact::m_getSecret(void) const
 {
-	return (this->_note);
+	return (this->_darkestSecret);
 }
 
 bool	Contact::m_exists(void) const

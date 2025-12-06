@@ -11,7 +11,7 @@ class	Contact
 		std::string	_lastName;
 		std::string	_nickname;
 		std::string	_phoneNumber;
-		std::string	_note;
+		std::string	_darkestSecret;
 	public:
 		Contact(void);
 		~Contact(void);
@@ -20,12 +20,12 @@ class	Contact
 		std::string	m_getLast(void)	const;
 		std::string	m_getNick(void) const;
 		std::string	m_getPhoneNum(void) const;
-		std::string	m_getNote(void) const;
+		std::string	m_getSecret(void) const;
 		void		m_setFirst(std::string str);
 		void		m_setLast(std::string str);
 		void		m_setNick(std::string str);
 		void		m_setPhoneNum(std::string str);
-		void		m_setNote(std::string str);
+		void		m_setSecret(std::string str);
 		bool		m_exists(void) const;
 
 };
