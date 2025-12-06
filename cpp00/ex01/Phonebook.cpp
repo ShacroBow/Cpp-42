@@ -17,6 +17,7 @@ Phonebook::~Phonebook(void)
 void	Phonebook::m_add(void)
 {
 	std::string	str = "";
+	Contact tmp;
 	int			current_idx;
 	
 	if (this->_idx >= 8)
@@ -26,7 +27,7 @@ void	Phonebook::m_add(void)
 		{
 			this->_contacts[i] = this->_contacts[i + 1];
 		}
-		current_idx = 7;
+		this->_idx = current_idx = 7;
 	}
 	else
 	{
@@ -38,44 +39,45 @@ void	Phonebook::m_add(void)
 	{
 		std::cout << std::setw(27) << std::left << "Enter the first name:";
 		if (std::getline(std::cin, str) && str != "")
-			this->_contacts[current_idx].m_setFirst(str); 
+			tmp.m_setFirst(str); 
 	}
 	str = "";
 	while (!std::cin.eof() && str == "")
 	{
 		std::cout << std::setw(27) << std::left 
-		<< ("Enter " + this->_contacts[current_idx].m_getFirst() + "'s last name: ");
+		<< ("Enter " + tmp.m_getFirst() + "'s last name: ");
 		if (std::getline(std::cin, str) && str != "")
-			this->_contacts[current_idx].m_setLast(str);
+			tmp.m_setLast(str);
 	}
 	str = "";
 	while (!std::cin.eof() && str == "")
 	{
 		std::cout << std::setw(27) << std::left 
-		<< ("Enter " + this->_contacts[current_idx].m_getFirst() + "'s nickname: "); 
+		<< ("Enter " + tmp.m_getFirst() + "'s nickname: "); 
 		if (std::getline(std::cin, str) && str != "")
-			this->_contacts[current_idx].m_setNick(str);
+			tmp.m_setNick(str);
 	}
 	str = "";
 	while (!std::cin.eof() && str == "")
 	{
 		std::cout << std::setw(27) << std::left 
-		<< ("Enter " + this->_contacts[current_idx].m_getFirst() + "'s phone number: ");
+		<< ("Enter " + tmp.m_getFirst() + "'s phone number: ");
 		if (std::getline(std::cin, str) && str != "")
-			this->_contacts[current_idx].m_setPhoneNum(str);
+			tmp.m_setPhoneNum(str);
 	}
 	str = "";
 	while (!std::cin.eof() && str == "")
 	{
 		std::cout << std::setw(27) << std::left 
-		<< ("Enter " + this->_contacts[current_idx].m_getFirst() + "'s darkest secret: ");
+		<< ("Enter " + tmp.m_getFirst() + "'s darkest secret: ");
 		if (std::getline(std::cin, str) && str != "")
 		{
-			this->_contacts[current_idx].m_setSecret(str);
-			std::cout << this->_contacts[current_idx].m_getFirst() 
+			tmp.m_setSecret(str);
+			std::cout << tmp.m_getFirst() 
 			<< " successfully added to phonebook [" << (current_idx + 1) << "/8]" << std::endl;
 		}
 	}
+	this->_contacts[current_idx] = tmp;
 	this->_idx++;
 }
 

@@ -15,8 +15,6 @@ public:
 	void	m_add(void);
 	void	m_search(void);
 	void	m_print(Contact contact);
-	
-	Contact	m_getContact(int idx);
 };
 
 int	ft_contactList(Contact contacts[8]);
