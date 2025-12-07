@@ -1,4 +1,4 @@
-NAME = harl
+NAME = harlFilter
 SRC = main.cpp Harl.cpp
 OBJ_DIR = ./obj/
 OBJ = $(SRC:%.cpp=$(OBJ_DIR)%.o)

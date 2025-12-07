@@ -10,7 +10,6 @@ int	ft_replaceInFile(std::string filename, std::string s1, std::string s2)
 	std::string		line;
 	size_t			pos;
 
-	// Open input file
 	infile.open(filename.c_str());
 	if (infile.fail())
 	{
@@ -18,7 +17,6 @@ int	ft_replaceInFile(std::string filename, std::string s1, std::string s2)
 		return (1);
 	}
 
-	// Read entire file
 	while (std::getline(infile, line))
 	{
 		content += line;
@@ -26,16 +24,12 @@ int	ft_replaceInFile(std::string filename, std::string s1, std::string s2)
 			content += "\n";
 	}
 	infile.close();
-
-	// Open output file
 	outfile.open((filename + ".replace").c_str());
 	if (outfile.fail())
 	{
 		std::cout << "Error: cannot create output file" << std::endl;
 		return (1);
 	}
-
-	// Replace all occurrences
 	pos = 0;
 	while (pos < content.size())
 	{
@@ -68,7 +62,6 @@ int	main(int argc, char **argv)
 	std::string	s1 = argv[2];
 	std::string	s2 = argv[3];
 
-	// Check for empty search string
 	if (s1.empty())
 	{
 		std::cout << "Error: search string (s1) cannot be empty" << std::endl;
