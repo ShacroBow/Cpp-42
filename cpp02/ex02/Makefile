@@ -1,13 +1,13 @@
-NAME = thingy
-SRC =	main.cpp
+NAME = fixed
+SRC = main.cpp Fixed.cpp
 OBJ_DIR = ./obj/
 OBJ = $(SRC:%.cpp=$(OBJ_DIR)%.o)
 #OBJ_BONUS = $(SRC_BONUS:%.cpp=$(OBJ_DIR)%.o)
 DEPS = $(OBJ:.o=.d)
-DEPS_BONUS = $(OBJ_BONUS:.o=.d)
+###DEPS_BONUS = $(OBJ_BONUS:.o=.d)
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -MP #-g
 
 
 all: $(NAME)
@@ -38,7 +38,7 @@ fclean: clean
 re: fclean all
 
 # Include auto-generated dependency files
--include $(DEPS)
--include $(DEPS_BONUS)
+###-include $(DEPS)
+###-include $(DEPS_BONUS)
 
 .PHONY: all clean fclean re #bonus
