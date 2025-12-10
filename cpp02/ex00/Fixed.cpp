@@ -1,4 +1,4 @@
-#include "Fixed.h"
+#include "Fixed.hpp"
 
 const int Fixed::_fract = 8;
 

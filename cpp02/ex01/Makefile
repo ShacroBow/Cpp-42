@@ -7,7 +7,7 @@ DEPS = $(OBJ:.o=.d)
 ###DEPS_BONUS = $(OBJ_BONUS:.o=.d)
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -MP -g
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -MP #-g
 
 
 all: $(NAME)
@@ -38,7 +38,7 @@ fclean: clean
 re: fclean all
 
 # Include auto-generated dependency files
-###-include $(DEPS)
+-include $(DEPS)
 ###-include $(DEPS_BONUS)
 
 .PHONY: all clean fclean re #bonus

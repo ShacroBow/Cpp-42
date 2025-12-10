@@ -1,9 +1,9 @@
-NAME = fixed
-SRC = main.cpp Fixed.cpp
+NAME = claptrap
+SRC = main.cpp ClapTrap.cpp
 OBJ_DIR = ./obj/
 OBJ = $(SRC:%.cpp=$(OBJ_DIR)%.o)
 #OBJ_BONUS = $(SRC_BONUS:%.cpp=$(OBJ_DIR)%.o)
-DEPS = $(OBJ:%.o=%.d)
+DEPS = $(OBJ:.o=.d)
 ###DEPS_BONUS = $(OBJ_BONUS:.o=.d)
 
 CXX = c++

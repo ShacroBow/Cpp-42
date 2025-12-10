@@ -38,7 +38,7 @@ fclean: clean
 re: fclean all
 
 # Include auto-generated dependency files
-###-include $(DEPS)
+-include $(DEPS)
 ###-include $(DEPS_BONUS)
 
 .PHONY: all clean fclean re #bonus

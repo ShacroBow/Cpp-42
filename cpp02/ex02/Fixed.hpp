@@ -1,10 +1,10 @@
-#ifndef FIXED_H
-#define FIXED_H
+#ifndef FIXED_HPP
+#define FIXED_HPP
 
 #include <iostream>
 #include <cmath>
 
-class Fixed
+class Fixed//fsd
 {
 	private:
 		int _value;
