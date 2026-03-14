@@ -3,13 +3,13 @@
 #include <cstdlib>
 #include <ctime>
 
-RobotomyRequestForm::RobotomyRequestForm(): Form("Robotomy Request Form", 72, 45), target("default")
+RobotomyRequestForm::RobotomyRequestForm(): AForm("Robotomy Request AForm", 72, 45), target("default")
 {}
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string& target): Form("Robotomy Request Form", 72, 45), target(target)
+RobotomyRequestForm::RobotomyRequestForm(const std::string& target): AForm("Robotomy Request AForm", 72, 45), target(target)
 {}
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& src): Form(src), target(src.target)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& src): AForm(src), target(src.target)
 {}
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
@@ -23,9 +23,9 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm& r
 void	RobotomyRequestForm::execute(const Bureaucrat& executor) const
 {
 	if (!getSigned())
-		throw Form::NotSignedException();
+		throw AForm::NotSignedException();
 	if ( executor.getGrade() > this->getGradeToExecute() )
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	else
 	{
 		static bool seeded = false;

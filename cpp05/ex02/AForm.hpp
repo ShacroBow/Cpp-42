@@ -7,7 +7,7 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	private:
 		const std::string	_name;
@@ -16,12 +16,12 @@ class Form
 		bool				_signed;
 	
 	public:
-		Form();
-		Form(std::string name, int tosign, int toexecute);
-		Form(const Form &copy);
-		virtual ~Form();
+		AForm();
+		AForm(std::string name, int tosign, int toexecute);
+		AForm(const AForm &copy);
+		virtual ~AForm();
 
-		Form				&operator=(const Form &copy);
+		AForm				&operator=(const AForm &copy);
 		void				beSigned(Bureaucrat const &penpusher);
 		virtual void		execute(Bureaucrat const &executor) const = 0;
 
@@ -50,6 +50,6 @@ class Form
 	};
 };
 
-std::ostream	&operator<<(std::ostream &o, const Form &f);
+std::ostream	&operator<<(std::ostream &o, const AForm &f);
 
 #endif

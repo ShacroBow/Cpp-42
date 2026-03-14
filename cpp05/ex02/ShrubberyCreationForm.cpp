@@ -1,13 +1,13 @@
 #include "ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(): Form("ShrubberyCreationForm", 145, 137), target("default")
+ShrubberyCreationForm::ShrubberyCreationForm(): AForm("ShrubberyCreationForm", 145, 137), target("default")
 {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target): Form("ShrubberyCreationForm", 145, 137), target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target): AForm("ShrubberyCreationForm", 145, 137), target(target)
 {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& rhs): Form(rhs), target(rhs.target)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& rhs): AForm(rhs), target(rhs.target)
 {}
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
@@ -21,9 +21,9 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 {
 	if (!getSigned())
-		throw Form::NotSignedException();
+		throw AForm::NotSignedException();
 	else if (executor.getGrade() > this->getGradeToExecute())
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 
 	std::ofstream file((target + "_shrubbery").c_str());
 

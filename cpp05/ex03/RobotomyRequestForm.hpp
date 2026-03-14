@@ -1,11 +1,11 @@
 #ifndef ROBOTOMYREQUESTFORM_HPP
 #define ROBOTOMYREQUESTFORM_HPP
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class Form;
+class AForm;
 
-class RobotomyRequestForm : public Form
+class RobotomyRequestForm : public AForm
 {
 private:
 	const std::string	target;

@@ -15,24 +15,24 @@ Intern&	Intern::operator=(const Intern& rhs)
 	return (*this);
 }
 
-Form	*Intern::createRobotomy(const std::string& target)
+AForm	*Intern::createRobotomy(const std::string& target)
 {
 	return new RobotomyRequestForm(target);
 }
 
-Form	*Intern::createShrubbery(const std::string& target)
+AForm	*Intern::createShrubbery(const std::string& target)
 {
 	return new ShrubberyCreationForm(target);
 }
 
-Form	*Intern::createPresidential(const std::string& target)
+AForm	*Intern::createPresidential(const std::string& target)
 {
 	return new PresidentialPardonForm(target);
 }
 
-Form	*Intern::makeForm( std::string name, std::string target )
+AForm	*Intern::makeForm( std::string name, std::string target )
 {
-	typedef Form* (Intern::*Creator)(const std::string&);
+	typedef AForm* (Intern::*Creator)(const std::string&);
 	std::string formNames[] = {
 		"robotomy request",
 		"shrubbery creation",
